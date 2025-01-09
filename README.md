@@ -16,8 +16,8 @@ A modern Next.js starter template pre-configured with Supabase authentication, d
 ### 1. Clone the Repository
 
 ```bash
-git clone [github project url]
-cd [project-name]
+git clone https://github.com/JOHN-AMAO/next-supabase-auth-starter.git
+cd next-supabase-auth-starter
 ```
 
 ### 2. Environment Setup
