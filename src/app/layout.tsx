@@ -8,7 +8,7 @@ const kanit = Kanit({weight: "700", subsets: ["latin"]})
 
 
 export const metadata: Metadata = {
-  title: "Autolearn - ",
+  title: "Voice - ",
   description: "",
 };
 
@@ -24,7 +24,7 @@ export default function RootLayout({
       >
          <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >

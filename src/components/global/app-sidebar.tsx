@@ -1,109 +1,69 @@
 "use client"
-import * as React from "react"
-import { Plus, Minus, FolderPlus, FilePlus } from "lucide-react"
 
-import { SearchForm } from "@/components/global/search-form"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+import * as React from "react"
+import { useState } from "react"
+import Link from "next/link"
+import { Kanit } from "next/font/google"
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
+  SidebarMenuButton,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import Link from "next/link"
-import {Kanit} from "next/font/google"
 
-const kanit = Kanit({weight: "600", subsets: ["latin"]})
-const kanit400 = Kanit({weight: "400", subsets: ["latin"]})
-
-// Sample data for folders and notes
-const data = {
-  folders: [
-    {
-      title: "Mathematics",
-      notes: [
-        { title: "Algebra Basics", url: "#" },
-        { title: "Calculus Introduction", url: "#" },
-      ],
-    },
-    {
-      title: "Physics",
-      notes: [
-        { title: "Newton's Laws", url: "#" },
-        { title: "Electromagnetism", url: "#" },
-      ],
-    },
-    {
-      title: "Computer Science",
-      notes: [
-        { title: "Introduction to Algorithms", url: "#" },
-        { title: "Data Structures Overview", url: "#" },
-      ],
-    },
-  ],
-}
+const kanit = Kanit({ weight: "600", subsets: ["latin"] })
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const [activeButton, setActiveButton] = useState<string | null>(null)
+
+  const handleButtonClick = (buttonName: string) => {
+    setActiveButton(buttonName)
+  }
+
   return (
-    <Sidebar {...props} className={`${kanit.className}`}>
-      <SidebarHeader>
+    <Sidebar {...props} className={kanit.className}>
+      <SidebarHeader className="mt-6">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/dashboard">
-              <h1 className="text-xl font-bold">Autolearn AI</h1>
+                <h1 className="text-2xl font-bold mb-8">Voice AI</h1>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        <SearchForm />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
+        <SidebarGroup className="mt-8">
           <SidebarMenu>
-            {data.folders.map((folder, index) => (
-              <Collapsible
-                key={folder.title}
-                defaultOpen={index === 0}
-                className="group/collapsible"
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                onClick={() => handleButtonClick('create')}
+                className={`${
+                  activeButton === 'create'
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-black hover:shadow-md hover:translate-x-1 hover:scale-105'
+                } transition-all duration-200 py-4 text-lg rounded-lg mb-4`}
               >
-                <SidebarMenuItem>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuButton>
-                      {folder.title}{" "}
-                      <Plus className="ml-auto group-data-[state=open]/collapsible:hidden" />
-                      <Minus className="ml-auto group-data-[state=closed]/collapsible:hidden" />
-                    </SidebarMenuButton>
-                  </CollapsibleTrigger>
-                  {folder.notes?.length ? (
-                    <CollapsibleContent>
-                      <SidebarMenuSub className={`${kanit400.className}`}>
-                        {folder.notes.map((note) => (
-                          <SidebarMenuSubItem key={note.title}>
-                            <SidebarMenuSubButton asChild>
-                              <a href={note.url} >{note.title}</a>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  ) : null}
-                </SidebarMenuItem>
-              </Collapsible>
-            ))}
-
-            
+                Create
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                onClick={() => handleButtonClick('library')}
+                className={`${
+                  activeButton === 'library'
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-black hover:shadow-md hover:translate-x-1 hover:scale-105'
+                } transition-all duration-200 py-4 text-lg rounded-lg`}
+              >
+                Library
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
