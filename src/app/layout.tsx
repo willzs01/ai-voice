@@ -8,7 +8,7 @@ const kanit = Kanit({weight: "700", subsets: ["latin"]})
 
 
 export const metadata: Metadata = {
-  title: "Voice - ",
+  title: "Voiceprinter - ",
   description: "",
 };
 

@@ -7,11 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Textarea } from '../../../components/ui/textarea';
 import { Mic, AudioLines, Volume2, Clock, Settings2, Download } from 'lucide-react';
 
-const VoiceGeneratorPage = () => {
+const VoiceprinterGeneratorPage = () => {
   const [text, setText] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const voices = [
+  const Voiceprinters = [
     { id: '1', name: 'Emma (Female)' },
     { id: '2', name: 'James (Male)' },
     { id: '3', name: 'Sarah (Female)' },
@@ -27,7 +27,7 @@ const VoiceGeneratorPage = () => {
   return (
     <div className="min-h-screen bg-black p-8">
       <div className="max-w-4xl mx-auto space-y-6">
-        <h1 className="text-3xl font-bold text-white">AI Voice Generator</h1>
+        <h1 className="text-3xl font-bold text-white">AI Voiceprinter Generator</h1>
         
         {/* Text Input */}
         <Card className="bg-gray-900 border-gray-800">
@@ -47,29 +47,29 @@ const VoiceGeneratorPage = () => {
           </CardContent>
         </Card>
 
-        {/* Voice Settings */}
+        {/* Voiceprinter Settings */}
         <Card className="bg-gray-900 border-gray-800">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-white">
               <Settings2 className="w-5 h-5 text-blue-400" />
-              Voice Settings
+              Voiceprinter Settings
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-4">
-              <label className="block text-sm font-medium text-gray-200">Select Voice</label>
+              <label className="block text-sm font-medium text-gray-200">Select Voiceprinter</label>
               <Select>
                 <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
-                  <SelectValue placeholder="Choose a voice" />
+                  <SelectValue placeholder="Choose a Voiceprinter" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
-                  {voices.map((voice) => (
+                  {Voiceprinters.map((Voiceprinter) => (
                     <SelectItem 
-                      key={voice.id} 
-                      value={voice.id}
+                      key={Voiceprinter.id} 
+                      value={Voiceprinter.id}
                       className="text-white hover:bg-gray-700"
                     >
-                      {voice.name}
+                      {Voiceprinter.name}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -157,4 +157,4 @@ const VoiceGeneratorPage = () => {
   );
 };
 
-export default VoiceGeneratorPage;
+export default VoiceprinterGeneratorPage;

@@ -31,7 +31,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link href="/dashboard">
-                <h1 className="text-2xl font-bold mb-8">Voice AI</h1>
+                <h1 className="text-2xl font-bold mb-8">Voiceprinter AI</h1>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
